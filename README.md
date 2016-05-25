@@ -31,6 +31,7 @@ eXtensible Unified GUI Library is aimed at unification of many different windowi
 
 <ul>
   <li>Implementation interoperability</li>
+  <li>XHTML and XML GUI layout capabilities</li>
   <li>On-the-fly GLSL Shader building and compilation</li>
   <li>Possibly more over time...</li>
 </ul>
