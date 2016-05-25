@@ -45,8 +45,8 @@ public final class GLShader implements Shader {
 	private boolean compiled;
 	private static final Frame DUMMY_FRAME = new GLFrame();
 
-	public GLShader(int type, String src) {
-		shader = glCreateShader(type);
+	public GLShader(int glType, String src) {
+		shader = glCreateShader(glType);
 		shaderSrc = src;
 	}
 

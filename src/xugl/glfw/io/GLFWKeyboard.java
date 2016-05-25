@@ -29,7 +29,7 @@ package xugl.glfw.io;
 
 import org.lwjgl.glfw.GLFWKeyCallback;
 import xugl.glfw.log.GLFWLogger;
-import xugl.glfw.ui.GLFWDisplay;
+import xugl.glfw.ui.display.GLFWDisplay;
 import xugl.io.KeyMap;
 import xugl.io.KeyMaps;
 import xugl.io.Keyboard;

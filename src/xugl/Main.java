@@ -32,7 +32,7 @@ import org.lwjgl.glfw.GLFW;
 import org.lwjgl.opengl.GL11;
 import xugl.glfw.io.GLFWKeyboard;
 import xugl.glfw.log.GLFWLogger;
-import xugl.glfw.ui.GLFWDisplay;
+import xugl.glfw.ui.display.GLFWDisplay;
 import xugl.io.Keyboard;
 import xugl.log.Logger;
 import xugl.ui.display.Display;

@@ -25,7 +25,7 @@
  *
  * This file is part of jGUI
  */
-package xugl.glfw.ui;
+package xugl.glfw.ui.display;
 
 import org.lwjgl.opengl.GL;
 import xugl.glfw.io.GLFWKeyboard;
@@ -82,7 +82,7 @@ public final class GLFWDisplay extends AbstractDisplay {
 	}
 
 	public long getHandle(GLFWKeyboard accessor) {
-		return accessor == this.keyboard ? window : hashCode();
+		return accessor == this.keyboard ? window : NULL;
 	}
 
 	@Override
