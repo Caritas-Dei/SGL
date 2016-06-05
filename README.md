@@ -7,6 +7,10 @@ Extensible Unified GUI Library
     [ ] Display
     <ul>
       <li>[x] GLFW</li>
+      <li>[ ] Nuklear</li>
+      <li>[ ] AWT</li>
+      <li>[ ] Swing</li>
+      <li>[ ] SWT</li>
       <li>...(request a framework via issue)</li>
     </ul>
   </li>
