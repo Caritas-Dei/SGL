@@ -15,6 +15,7 @@ Although it appears the project is dead, I do not have internet, so I am unable 
       <li>[ ] AWT</li>
       <li>[ ] Swing</li>
       <li>[ ] SWT</li>
+      <li>[ ] JavaFX</li>
       <li>...(request a framework via issue)</li>
     </ul>
   </li>
