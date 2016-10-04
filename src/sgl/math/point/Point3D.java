@@ -21,26 +21,22 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  *
- * Created file on 5/10/16 at 6:57 AM.
+ * Created file on 10/2/16 at 4:26 PM.
  *
- * This file is part of xGUI
+ * This file is part of XUGL
  */
-package xugl.io;
+package sgl.math.point;
 
 /**
  * @author link
  */
-public interface Keyboard {
+public interface Point3D extends Point2D {
 
-	boolean isKeyDown(int key);
+	double getZ();
 
-	boolean isKeyUp(int key);
+	@Override
+	default double[] getCoords() {
+		return new double[]{getX(), getY(), getZ()};
+	}
 
-	boolean isKeyTyped(int key);
-
-	int getKeyCount();
-
-	int getKeyState(int key);
-
-	KeyMap getKeyMap();
 }

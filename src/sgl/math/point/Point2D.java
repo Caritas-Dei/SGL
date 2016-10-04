@@ -21,17 +21,23 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  *
- * Created file on 5/21/16 at 8:10 PM.
+ * Created file on 10/2/16 at 4:25 PM.
  *
- * This file is part of xugl
+ * This file is part of XUGL
  */
-package xugl.ui.canvas.texture;
+package sgl.math.point;
 
 /**
  * @author link
  */
-public interface Texture {
-	int[] getPixelsi();
+public interface Point2D extends Point {
 
-	float[] getPixelsf();
+	double getX();
+
+	double getY();
+
+	default double[] getCoords() {
+		return new double[]{getX(), getY()};
+	}
+
 }

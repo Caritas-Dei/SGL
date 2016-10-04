@@ -21,17 +21,41 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  *
- * Created file on 5/21/16 at 8:09 PM.
+ * Created file on 10/2/16 at 4:58 PM.
  *
- * This file is part of xugl
+ * This file is part of XUGL
  */
-package xugl.ui.canvas.model;
+package sgl.math.matrix;
 
 /**
  * @author link
  */
-public interface Model {
-	int[] getPointsi();
+public interface Matrix<T extends Comparable<T>> extends Comparable<Matrix<T>> {
 
-	float[] getPointsf();
+	T[] toArray();
+
+	boolean[] toArrayB();
+
+	byte[] toArrayb();
+
+	short[] toArrays();
+
+	int[] toArrayi();
+
+	long[] toArrayl();
+
+	float[] toArrayf();
+
+	double[] toArrayd();
+
+	Matrix<T> add(Matrix<T> matrix);
+
+	Matrix<T> sub(Matrix<T> matrix);
+
+	Matrix<T> mul(Matrix<T> matrix);
+
+	Matrix<T> div(Matrix<T> matrix);
+
+	Matrix<T> invert();
+
 }
