@@ -21,34 +21,35 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  *
- * Created file on 5/10/16 at 5:06 PM.
+ * Created file on 8/27/16 at 9:43 AM.
  *
- * This file is part of xGUI
+ * This file is part of XUGL
  */
-package xugl.io;
+package sgl.gl.canvas;
 
-import java.util.HashMap;
-import java.util.Map;
+import sgl.ui.canvas.Canvas;
+import sgl.ui.image.Image;
+import sgl.ui.image.color.Color;
+
+import static org.lwjgl.opengl.GL11.*;
 
 /**
+ * OpenGL 1.1 Canvas
+ *
  * @author link
  */
-public enum KeyMaps {
+public class GL11Canvas implements Canvas {
 
-	;
-	private static final Map<String, KeyMap> KEY_MAPS = new HashMap<>(1, 0.01f);
-	private final String name;
-
-	KeyMaps(String name) {
-		this.name = name;
+	@Override
+	public void draw(Image image, int x, int y) {
+		glRasterPos2i(x, y);
+		glDrawPixels(800, 600, GL_RGB, GL_UNSIGNED_INT, image.values());
 	}
 
-	public static void addMap(String name, KeyMap keyMap) {
-		KEY_MAPS.putIfAbsent(name, keyMap);
-	}
-
-	public static KeyMap getMap(String name) {
-		return KEY_MAPS.get(name);
+	@Override
+	public void draw(Color color, int x, int y) {
+		glRasterPos2i(x, y);
+		glDrawPixels(1, 1, GL_RGBA, GL_UNSIGNED_INT, new int[]{color.rgba()});
 	}
 
 }

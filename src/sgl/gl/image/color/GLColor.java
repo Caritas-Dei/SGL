@@ -21,14 +21,49 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  *
- * Created file on 5/17/16 at 12:25 PM.
+ * Created file on 9/19/16 at 1:55 PM.
  *
- * This file is part of xugl
+ * This file is part of XUGL
  */
-package xugl.log;
+package sgl.gl.image.color;
+
+import sgl.ui.image.color.Color;
 
 /**
  * @author link
  */
-public class LogManager {
+public class GLColor<C extends Comparable<C>> implements Color {
+
+	public GLColor(C color) {
+	}
+
+	@Override
+	public float red() {
+		return 0;
+	}
+
+	@Override
+	public float green() {
+		return 0;
+	}
+
+	@Override
+	public float blue() {
+		return 0;
+	}
+
+	@Override
+	public float alpha() {
+		return 0;
+	}
+
+	@Override
+	public int rgba() {
+		return 0;
+	}
+
+	@Override
+	public int argb() {
+		return 0;
+	}
 }

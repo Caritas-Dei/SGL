@@ -21,37 +21,18 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  *
- * Created file on 5/24/16 at 11:44 AM.
+ * Created file on 9/25/16 at 12:32 PM.
  *
  * This file is part of XUGL
  */
-package xugl.gl.canvas;
+package sgl.gl;
 
-import xugl.ui.canvas.Frame;
+import sgl.gl.context.GLContext;
+import sgl.ui.display.Display;
 
 /**
  * @author link
  */
-public final class GLFrame implements Frame {
-
-	private boolean stale;
-
-	public void stale(boolean stale) {
-		this.stale = stale;
-	}
-
-	@Override
-	public int[] getPixelsi() {
-		return new int[0];
-	}
-
-	@Override
-	public float[] getPixelsf() {
-		return new float[0];
-	}
-
-	@Override
-	public boolean isStale() {
-		return stale;
-	}
+public interface GLDisplay extends Display, GLObject {
+	GLContext getContext();
 }

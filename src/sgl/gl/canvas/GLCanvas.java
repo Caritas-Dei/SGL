@@ -21,16 +21,39 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  *
- * Created file on 5/24/16 at 11:31 AM.
+ * Created file on 9/23/16 at 7:06 PM.
  *
  * This file is part of XUGL
  */
+package sgl.gl.canvas;
+
+import sgl.gl.OpenGL;
+import sgl.ui.canvas.Canvas;
+import sgl.ui.image.Image;
+import sgl.ui.image.color.Color;
+
 /**
- * Provisional Logging that will be removed after development,
- * and will be further developed in a separate library.
- * <p>
- * FIXME concurrent immediate logging
- *
  * @author link
  */
-package xugl.log;
+public final class GLCanvas implements Canvas {
+
+	private Canvas glCanvas;
+
+	public GLCanvas() {
+		this((GLCanvas) OpenGL.getContext().getDisplay().getCanvas());
+	}
+
+	public GLCanvas(GLCanvas canvas) {
+		glCanvas = canvas;
+	}
+
+	@Override
+	public void draw(Image image, int x, int y) {
+		glCanvas.draw(image, x, y);
+	}
+
+	@Override
+	public void draw(Color color, int x, int y) {
+		glCanvas.draw(color, x, y);
+	}
+}

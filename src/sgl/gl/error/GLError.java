@@ -21,14 +21,14 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  *
- * Created file on 1/2/16 at 1:34 PM.
+ * Created file on 9/24/16 at 7:01 AM.
  *
- * This file is part of jGUI
+ * This file is part of XUGL
  */
-package xugl.gl.objects;
+package sgl.gl.error;
 
 /**
  * @author link
  */
-public interface VertexBuffer {
+public class GLError {
 }

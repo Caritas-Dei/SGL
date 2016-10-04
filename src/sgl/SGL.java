@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright 2015 link.
+ * Copyright 2016 link.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,38 +21,34 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  *
- * Created file on 12/29/15 at 1:30 PM.
+ * Created file on 9/26/16 at 11:40 AM.
  *
- * This file is part of jGUI
+ * This file is part of XUGL
  */
-package xugl.glfw.error;
-
-import org.lwjgl.system.MemoryUtil;
+package sgl;
 
 /**
  * @author link
  */
-public class GLFWException extends Exception {
+public class SGL {
 
-	protected final int errorCode;
-	protected final String description;
+	private static SGL.Display displayLib;
 
-	public GLFWException(int errorCode, long description) {
-		this.errorCode = errorCode;
-		this.description = decode(description);
+	private static SGL.Canvas canvasLib;
+
+	public static void setDisplayLibrary(SGL.Display lib) {
+		displayLib = lib;
 	}
 
-	static String decode(long description) {
-		return MemoryUtil.memUTF8(description);
+	public static void setCanvasLibrary(SGL.Canvas lib) {
+		canvasLib = lib;
 	}
 
-	@Override
-	public String getMessage() {
-		return description;
+	public enum Display {
+		GLFW, SWT, SWING, JAVAFX, AWT
 	}
 
-	public String getLocalizedMessage() {
-		return description;
+	public enum Canvas {
+		OPENGL, VULKAN
 	}
-
 }
