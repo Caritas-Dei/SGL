@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright 2016 link.
+ * Copyright 2015 link.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,19 +21,21 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  *
- * Created file on 5/21/16 at 8:09 PM.
+ * Created file on 12/29/15 at 1:48 PM.
  *
- * This file is part of xugl
+ * This file is part of jGUI
  */
-package xugl.ui.canvas.shader;
+package sgl.glfw.error;
 
-import xugl.ui.canvas.Frame;
-import xugl.ui.canvas.model.Model;
-import xugl.ui.canvas.texture.Texture;
+import static org.lwjgl.glfw.GLFW.GLFW_FORMAT_UNAVAILABLE;
 
 /**
  * @author link
  */
-public interface Shader {
-	Frame process(Model model, Texture texture);
+public class GLFWFormatUnavailableException extends GLFWException {
+
+	public GLFWFormatUnavailableException(long description) {
+		super(GLFW_FORMAT_UNAVAILABLE, description);
+	}
+
 }
