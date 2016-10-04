@@ -32,23 +32,4 @@ package sgl;
  */
 public class SGL {
 
-	private static SGL.Display displayLib;
-
-	private static SGL.Canvas canvasLib;
-
-	public static void setDisplayLibrary(SGL.Display lib) {
-		displayLib = lib;
-	}
-
-	public static void setCanvasLibrary(SGL.Canvas lib) {
-		canvasLib = lib;
-	}
-
-	public enum Display {
-		GLFW, SWT, SWING, JAVAFX, AWT
-	}
-
-	public enum Canvas {
-		OPENGL, VULKAN
-	}
 }
