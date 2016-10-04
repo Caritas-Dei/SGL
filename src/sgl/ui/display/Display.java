@@ -25,16 +25,15 @@
  *
  * This file is part of jGUI
  */
-package xugl.ui.display;
+package sgl.ui.display;
 
-import xugl.io.Keyboard;
-import xugl.ui.canvas.Canvas;
+import sgl.io.Keyboard;
+import sgl.ui.canvas.Canvas;
 
 /**
  * @author link
  */
 public interface Display {
-
 
 	/**
 	 * Gets the x of this Display on the screen.
@@ -90,6 +89,11 @@ public interface Display {
 	 */
 	void setHeight(int height);
 
+	/**
+	 * Gets the title of this Display.
+	 *
+	 * @return the title of this Display
+	 */
 	String getTitle();
 
 	/**
@@ -101,20 +105,22 @@ public interface Display {
 	void setTitle(String title);
 
 	/**
-	 * Gets the canvas that this Display is rendering.
+	 * Gets the {@linkplain sgl.ui.canvas.Canvas Canvas} this Display draws.
 	 *
-	 * @return the canvas that this Display is rendering
+	 * @return the Canvas this Display draws
+	 *
+	 * @see sgl.ui.canvas.Canvas
 	 */
 	Canvas getCanvas();
 
 	/**
-	 * Sets the canvas that this Display will render.
+	 * Sets the Canvas that this Display will draw.
 	 *
-	 * @param canvas
-	 * 		the canvas this Display will render
+	 * @param canvas the Canvas this Display will draw
+	 *
+	 * @see #getCanvas()
 	 */
 	void setCanvas(Canvas canvas);
-
 
 	/**
 	 * Shows this Display if hidden.
@@ -137,12 +143,9 @@ public interface Display {
 	void destroy();
 
 	/**
-	 * Renders the specified canvas, but doesn't refresh this Display.
-	 */
-	void render(Canvas canvas);
-
-	/**
-	 * Refreshes the Display.
+	 * Refreshes the Display after uploading data to
+	 * be
+	 * drawn.
 	 */
 	void refresh();
 
@@ -161,7 +164,7 @@ public interface Display {
 	 * 		the title of the child Display
 	 * @return a child of this Display
 	 */
-	Display createChild(int x, int y, int width, int height, String title);
+	Display createChild(int x, int y, int width, int height, String title, Canvas canvas);
 
 	Keyboard getKeyboard();
 

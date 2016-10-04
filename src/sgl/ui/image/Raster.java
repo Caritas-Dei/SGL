@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright 2015 link.
+ * Copyright 2016 link.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,45 +21,68 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  *
- * Created file on 12/27/15 at 4:08 PM.
+ * Created file on 9/19/16 at 1:20 PM.
  *
- * This file is part of jGUI
+ * This file is part of XUGL
  */
+package sgl.ui.image;
 
-package xugl;
-
-import org.lwjgl.glfw.GLFW;
-import org.lwjgl.opengl.GL11;
-import xugl.glfw.io.GLFWKeyboard;
-import xugl.glfw.log.GLFWLogger;
-import xugl.glfw.ui.display.GLFWDisplay;
-import xugl.io.Keyboard;
-import xugl.log.Logger;
-import xugl.ui.display.Display;
+import sgl.ui.canvas.Canvas;
+import sgl.ui.image.color.Color;
 
 /**
  * @author link
  */
-public class Main {
+public class Raster<C extends Canvas> implements Image<C> {
 
-	private static final Logger LOGGER = new GLFWLogger("Main Logger");
+	protected Color[] pixels;
 
-	public static void main(String... args) {
-		LOGGER.log("Started XUGL Test");
+	public Raster() {
+		this(0);
+	}
 
-		Display display = new GLFWDisplay(0, 0, 800, 600, "Display Test");
-		Keyboard keyboard = display.getKeyboard();
-		display.show();
+	public Raster(int size) {
+		pixels = new Color[size];
 
-		GL11.glClearColor(1.0f, 1.0f, 1.0f, 0.0f);
+	}
 
-		while (!GLFW.glfwWindowShouldClose(((GLFWDisplay) display).getHandle((GLFWKeyboard) keyboard))) {
-			GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);
-			GLFW.glfwSwapBuffers(((GLFWDisplay) display).getHandle((GLFWKeyboard) keyboard));
-			GLFW.glfwPollEvents();
-			if (keyboard.isKeyTyped(GLFW.GLFW_KEY_ESCAPE)) {
-				display.close();
-			}
-		}
+	@Override
+	public int getSize() {
+		return pixels.length;
+	}
+
+	@Override
+	public Color get(int index) {
+		return pixels[index];
+	}
+
+	@Override
+	public void set(int index, Color color) {
+		pixels[index] = color;
+	}
+
+	@Override
+	public Color[] get() {
+		return new Color[0];
+	}
+
+	@Override
+	public void set(Color[] colors) {
+
+	}
+
+	@Override
+	public int[] values() {
+		return new int[0];
+	}
+
+	@Override
+	public void values(int[] values) {
+
+	}
+
+	@Override
+	public void draw(C canvas) {
+
 	}
 }

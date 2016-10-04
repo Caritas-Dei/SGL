@@ -21,21 +21,20 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  *
- * Created file on 5/23/16 at 8:25 AM.
+ * Created file on 9/30/16 at 7:11 AM.
  *
- * This file is part of xugl
+ * This file is part of XUGL
  */
-package xugl.ui.canvas;
+package sgl.ui.canvas;
 
 /**
+ * An object that can be rendered to a canvas for drawing to the screen.
+ *
  * @author link
+ * @see sgl.ui.image.Image
+ * @see sgl.ui.image.Raster
  */
-public interface Frame {
-
-	int[] getPixelsi();
-
-	float[] getPixelsf();
-
-	boolean isStale();
-
+@FunctionalInterface
+public interface Renderable<C extends Canvas> {
+	void render(C canvas);
 }

@@ -21,18 +21,39 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  *
- * Created file on 5/1/16 at 7:25 PM.
+ * Created file on 5/27/16 at 6:55 AM.
  *
- * This file is part of lwjGUI
+ * This file is part of XUGL
  */
-package xugl;
+package sgl.ui.image;
+
+import sgl.ui.canvas.Canvas;
+import sgl.ui.canvas.Renderable;
+import sgl.ui.image.color.Color;
+
+import java.nio.Buffer;
 
 /**
  * @author link
  */
-public class Test {
+public interface Image<C extends Canvas, B extends Buffer> extends Renderable<C> {
 
-	public static void main(String... args) {
+	int getSize();
 
+	Color get(int index);
+
+	void set(int index, Color color);
+
+	default B getValues() {
+		return getValues(0, getSize() - 1);
 	}
+
+	B getValues(int start, int end);
+
+	default void setValues(B values) {
+		setValues(values, 0, getSize() - 1);
+	}
+
+	void setValues(B values, int start, int end);
+
 }

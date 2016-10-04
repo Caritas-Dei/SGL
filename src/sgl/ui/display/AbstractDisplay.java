@@ -25,9 +25,9 @@
  *
  * This file is part of jGUI
  */
-package xugl.ui.display;
+package sgl.ui.display;
 
-import xugl.ui.canvas.Canvas;
+import sgl.ui.canvas.Canvas;
 
 /**
  * @author link
@@ -38,7 +38,7 @@ public abstract class AbstractDisplay implements Display {
 	protected int x, y, width, height;
 	/** The title of this Display */
 	protected String title;
-	/** The canvas this Display will render */
+	/** */
 	protected Canvas canvas;
 
 	/**
@@ -56,12 +56,13 @@ public abstract class AbstractDisplay implements Display {
 	 * @param title
 	 * 		the title of this Display
 	 */
-	protected AbstractDisplay(int x, int y, int width, int height, String title) {
+	protected AbstractDisplay(int x, int y, int width, int height, String title, Canvas canvas) {
 		this.x = x;
 		this.y = y;
 		this.width = width;
 		this.height = height;
 		this.title = title;
+		this.canvas = canvas;
 	}
 
 	@Override
@@ -123,4 +124,5 @@ public abstract class AbstractDisplay implements Display {
 	public void setCanvas(Canvas canvas) {
 		this.canvas = canvas;
 	}
+
 }

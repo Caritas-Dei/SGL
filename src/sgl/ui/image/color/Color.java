@@ -21,35 +21,27 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  *
- * Created file on 5/21/16 at 8:08 PM.
+ * Created file on 9/19/16 at 1:27 PM.
  *
- * This file is part of xugl
+ * This file is part of XUGL
  */
-package xugl.ui.canvas;
-
-import xugl.ui.canvas.model.Model;
-import xugl.ui.canvas.shader.Shader;
-import xugl.ui.canvas.texture.Texture;
+package sgl.ui.image.color;
 
 /**
  * @author link
  */
-public interface Canvas {
+public interface Color {
 
-	void model(Model model);
+	float red();
 
-	void texture(Texture texture);
+	float green();
 
-	void shade(Shader shader);
+	float blue();
 
-	Model getModel();
+	float alpha();
 
-	Texture getTexture();
+	int rgba();
 
-	Shader getShader();
-
-	default Frame draw() {
-		return getShader().process(getModel(), getTexture());
-	}
+	int argb();
 
 }
