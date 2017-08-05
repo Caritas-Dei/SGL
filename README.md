@@ -3,8 +3,10 @@ Standard GUI Library
 
 <em>Not to be confused with <a href="http://www.cacr.caltech.edu/~slombey/viz/sGL/api/">sGL</a></em>
 <hr/>
+
 # TODO
-###<img src="https://pixabay.com/static/uploads/photo/2012/04/16/13/51/triangle-36069_960_720.png" alt="warning" width="50" height="50"/>&emsp;&emsp;The repo is inactive; the sole developer isn't ;)
+
+<img src="https://pixabay.com/static/uploads/photo/2012/04/16/13/51/triangle-36069_960_720.png" alt="warning" width="50" height="50"/>&emsp;&emsp;The repo is inactive; the sole developer isn't ;)
 Although it appears the project is dead, I do not have internet, so I am unable to update the repo except when at school or at a WiFi hotspot.
 <ul>
   <li>
