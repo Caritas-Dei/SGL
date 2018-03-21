@@ -25,20 +25,19 @@
  *
  * This file is part of SGL
  */
-package sgl;
-
-import sgl.toolkit.Toolkit;
+package sgl.util.jni;
 
 /**
  * @author link
  */
-public enum SGL {
-	;
+@FunctionalInterface
+public interface NativeAccessible {
 
-	private static final Toolkit CROSS_PLATFORM_TOOLKIT = null;
-
-	public static Toolkit getDefaultToolkit() {
-		return CROSS_PLATFORM_TOOLKIT;
-	}
+	/**
+	 * Gets the native pointer to this object, or NULL pointer (0L).
+	 *
+	 * @return the native pointer to this object
+	 */
+	long ptr();
 
 }

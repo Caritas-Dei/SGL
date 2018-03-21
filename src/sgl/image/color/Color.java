@@ -25,20 +25,23 @@
  *
  * This file is part of SGL
  */
-package sgl;
-
-import sgl.toolkit.Toolkit;
+package sgl.image.color;
 
 /**
  * @author link
  */
-public enum SGL {
-	;
+public interface Color {
 
-	private static final Toolkit CROSS_PLATFORM_TOOLKIT = null;
+	float red();
 
-	public static Toolkit getDefaultToolkit() {
-		return CROSS_PLATFORM_TOOLKIT;
-	}
+	float green();
+
+	float blue();
+
+	float alpha();
+
+	int rgba();
+
+	int argb();
 
 }

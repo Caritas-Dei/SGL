@@ -25,20 +25,30 @@
  *
  * This file is part of SGL
  */
-package sgl;
+package sgl.toolkit;
 
-import sgl.toolkit.Toolkit;
+import sgl.canvas.Renderer;
+import sgl.display.Display;
+import sgl.util.Builder;
 
 /**
  * @author link
  */
-public enum SGL {
-	;
+public interface DisplayBuilder extends Builder<Display> {
 
-	private static final Toolkit CROSS_PLATFORM_TOOLKIT = null;
+	DisplayBuilder x(int x);
 
-	public static Toolkit getDefaultToolkit() {
-		return CROSS_PLATFORM_TOOLKIT;
-	}
+	DisplayBuilder y(int y);
+
+	DisplayBuilder width(int width);
+
+	DisplayBuilder height(int height);
+
+	DisplayBuilder title(String title);
+
+	DisplayBuilder renderer(Renderer renderer);
+
+	@Override
+	Display build();
 
 }

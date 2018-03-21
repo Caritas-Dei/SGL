@@ -25,20 +25,19 @@
  *
  * This file is part of SGL
  */
-package sgl;
 
-import sgl.toolkit.Toolkit;
+package sgl.opengl.error;
 
 /**
  * @author link
  */
-public enum SGL {
-	;
+public class UnsupportedProfileException extends RuntimeException {
 
-	private static final Toolkit CROSS_PLATFORM_TOOLKIT = null;
-
-	public static Toolkit getDefaultToolkit() {
-		return CROSS_PLATFORM_TOOLKIT;
+	public UnsupportedProfileException(Class<?> source, String reason) {
+		super("[" + source.getName() + "]: The current OpenGL profile is not supported: " + reason);
 	}
 
+	public UnsupportedProfileException(Class<?> source, String reason, Throwable cause) {
+		super("[" + source.getName() + "]: The current OpenGL profile is not supported: " + reason, cause);
+	}
 }

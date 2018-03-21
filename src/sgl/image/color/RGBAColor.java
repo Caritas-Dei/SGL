@@ -25,20 +25,49 @@
  *
  * This file is part of SGL
  */
-package sgl;
-
-import sgl.toolkit.Toolkit;
+package sgl.image.color;
 
 /**
  * @author link
  */
-public enum SGL {
-	;
+public final class RGBAColor implements Color {
 
-	private static final Toolkit CROSS_PLATFORM_TOOLKIT = null;
+	private float r, g, b, a;
 
-	public static Toolkit getDefaultToolkit() {
-		return CROSS_PLATFORM_TOOLKIT;
+	public RGBAColor(float red, float green, float blue, float alpha) {
+		this.r = red;
+		this.g = green;
+		this.b = blue;
+		this.a = alpha;
 	}
 
+	@Override
+	public float red() {
+		return r;
+	}
+
+	@Override
+	public float green() {
+		return g;
+	}
+
+	@Override
+	public float blue() {
+		return b;
+	}
+
+	@Override
+	public float alpha() {
+		return a;
+	}
+
+	@Override
+	public int rgba() {
+		return ((int) (r * 255) << 24) | ((int) (g * 255) << 16) | ((int) (b * 255) << 8) | (int) (a * 255);
+	}
+
+	@Override
+	public int argb() {
+		return ((int) (a * 255) << 24) | ((int) (r * 255) << 16) | ((int) (g * 255) << 8) | (int) (b * 255);
+	}
 }

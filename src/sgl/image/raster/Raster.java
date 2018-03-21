@@ -25,20 +25,36 @@
  *
  * This file is part of SGL
  */
-package sgl;
+package sgl.image.raster;
 
-import sgl.toolkit.Toolkit;
+import sgl.buffer.Buffer;
+import sgl.image.color.Color;
 
 /**
+ * A Raster for an Image. This object contains the actual data for an image.
+ *
  * @author link
  */
-public enum SGL {
-	;
+public interface Raster extends Buffer {
 
-	private static final Toolkit CROSS_PLATFORM_TOOLKIT = null;
+	/**
+	 * Gets a range of colors from the given <em>offset</em> to <em>offset +
+	 * size</em> in this Raster and places them in the given Color array.
+	 *
+	 * @param offset the offset into this Raster
+	 * @param size   the size of the Color[] array
+	 * @param color  the array to write to
+	 */
+	void get(int offset, int size, final Color[] color);
 
-	public static Toolkit getDefaultToolkit() {
-		return CROSS_PLATFORM_TOOLKIT;
-	}
+	/**
+	 * Sets a range of colors from the given <em>offset</em> to <em>offset +
+	 * size</em> in the given Color array and places them in this Raster.
+	 *
+	 * @param offset the offset into this Raster
+	 * @param size   the size of the Color[] array
+	 * @param color  the array to read from
+	 */
+	void set(int offset, int size, final Color[] color);
 
 }

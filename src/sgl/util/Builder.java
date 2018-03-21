@@ -25,20 +25,14 @@
  *
  * This file is part of SGL
  */
-package sgl;
-
-import sgl.toolkit.Toolkit;
+package sgl.util;
 
 /**
  * @author link
  */
-public enum SGL {
-	;
+@FunctionalInterface
+public interface Builder<T> {
 
-	private static final Toolkit CROSS_PLATFORM_TOOLKIT = null;
-
-	public static Toolkit getDefaultToolkit() {
-		return CROSS_PLATFORM_TOOLKIT;
-	}
+	T build();
 
 }

@@ -25,20 +25,67 @@
  *
  * This file is part of SGL
  */
-package sgl;
+package sgl.opengl.canvas;
 
-import sgl.toolkit.Toolkit;
+import sgl.canvas.Canvas;
+import sgl.image.Image;
+import sgl.image.color.Color;
+import sgl.opengl.image.GLImage;
+import sgl.shape.Shape;
 
 /**
  * @author link
  */
-public enum SGL {
-	;
+public class GLCanvas implements Canvas {
 
-	private static final Toolkit CROSS_PLATFORM_TOOLKIT = null;
-
-	public static Toolkit getDefaultToolkit() {
-		return CROSS_PLATFORM_TOOLKIT;
+	@Override
+	public int getSize() {
+		return 0;
 	}
 
+	@Override
+	public void setSize(int size) {
+
+	}
+
+	@Override
+	public void offset(double offset) {
+
+	}
+
+	@Override
+	public void draw(Color color) {
+	}
+
+	@Override
+	public void draw(Image image) {
+		if (image instanceof GLImage) {
+
+		}
+	}
+
+	@Override
+	public void draw(Shape shape) {
+
+	}
+
+	@Override
+	public void draw(double offset, Color color) {
+
+	}
+
+	@Override
+	public void draw(double offset, Image image) {
+
+	}
+
+	@Override
+	public void draw(double offset, Shape shape) {
+
+	}
+
+	@Override
+	public void fill(double offset, double size, Color color) {
+
+	}
 }

@@ -25,20 +25,24 @@
  *
  * This file is part of SGL
  */
-package sgl;
+package sgl.canvas;
 
-import sgl.toolkit.Toolkit;
+import java.util.function.Consumer;
 
 /**
+ * An object that can be rendered to a canvas for drawing to the screen.
+ *
  * @author link
+ * @see sgl.image.Image
  */
-public enum SGL {
-	;
+@FunctionalInterface
+public interface Renderable<C extends Canvas> extends Consumer<C> {
 
-	private static final Toolkit CROSS_PLATFORM_TOOLKIT = null;
+	void render(C canvas);
 
-	public static Toolkit getDefaultToolkit() {
-		return CROSS_PLATFORM_TOOLKIT;
+	@Override
+	default void accept(C c) {
+		render(c);
 	}
 
 }

@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright 2015 link.
+ * Copyright ${year} Andrew Porter.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,20 +21,23 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  *
- * Created file on 12/27/15 at 4:08 PM.
+ * Created file on ${date} at ${time}.
  *
- * This file is part of jGUI
+ * This file is part of SGL
  */
-
 package sgl;
 
-import sgl.gl.canvas.GL11Canvas;
+import sgl.display.Display;
+import sgl.display.Mode;
+import sgl.glfw.display.GLFWDisplay;
 import sgl.glfw.log.GLFWLogger;
-import sgl.glfw.ui.display.GLFWDisplay;
+import sgl.image.color.Color;
+import sgl.image.color.RGBAColor;
 import sgl.io.Keyboard;
-import sgl.log.Logger;
-import sgl.ui.canvas.Canvas;
-import sgl.ui.display.Display;
+import sgl.opengl.texture.GLTexture2D;
+import sgl.util.log.Logger;
+
+import java.util.Arrays;
 
 import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL11.*;
@@ -48,39 +51,37 @@ public class Main {
 
 	public static void main(String... args) {
 
-		LOGGER.log("Started XUGL Test");
+		LOGGER.log("Started SGL Test");
 
-		Display display = new GLFWDisplay(0, 0, 800, 600, "GLFW Display", new GL11Canvas());
+		Display display = new GLFWDisplay(0, 0, 800, 600, "GLFW Display", null);
 		Keyboard keyboard = display.getKeyboard();
-		Canvas canvas = display.getCanvas();
 		display.show();
-
+		GLTexture2D texture = new GLTexture2D(800, 600);
+		texture.set(0, 1, new Color[]{new RGBAColor(255, 255, 255, 255)});
+		Color[] colors = new Color[1];
+		texture.get(0, 1, colors);
+		System.out.println(Arrays.toString(colors));
+		// set the clear color for the buffer
 		glClearColor(1.0f, 1.0f, 1.0f, 0.0f);
 
+		// the initial vertex shader
+		//int vsh = glCreateShader(GL_VERTEX_SHADER);
+
+		// the initial fragment shader
+		//int fsh = glCreateShader(GL_FRAGMENT_SHADER);
 		while (!glfwWindowShouldClose(((GLFWDisplay) display).ptr())) {
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-			glfwSwapBuffers(((GLFWDisplay) display).ptr());
-			glfwPollEvents();
+			glfwWaitEvents();
 
-			display.refresh();
 			if (keyboard.isKeyTyped(GLFW_KEY_ESCAPE)) {
 				display.close();
 			} else if (keyboard.isKeyTyped(GLFW_KEY_R)) {
 				display.refresh();
+			} else if (keyboard.isKeyTyped(GLFW_KEY_F11)) {
+				display.setMode(Mode.FULLSCREEN);
 			}
+			display.refresh();
 		}
-	}
-
-	public static double avg(double[] values) {
-		double result = 0;
-
-		for (double value : values) {
-			result += value;
-		}
-
-		result /= values.length;
-
-		return result;
 	}
 
 }

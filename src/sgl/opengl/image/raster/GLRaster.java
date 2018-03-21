@@ -25,20 +25,16 @@
  *
  * This file is part of SGL
  */
-package sgl;
+package sgl.opengl.image.raster;
 
-import sgl.toolkit.Toolkit;
+import sgl.image.raster.Raster;
 
 /**
  * @author link
  */
-public enum SGL {
-	;
+public abstract class GLRaster implements Raster {
 
-	private static final Toolkit CROSS_PLATFORM_TOOLKIT = null;
+	protected GLRaster() {
 
-	public static Toolkit getDefaultToolkit() {
-		return CROSS_PLATFORM_TOOLKIT;
 	}
-
 }

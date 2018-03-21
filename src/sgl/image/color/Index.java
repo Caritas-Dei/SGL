@@ -25,20 +25,20 @@
  *
  * This file is part of SGL
  */
-package sgl;
-
-import sgl.toolkit.Toolkit;
+package sgl.image.color;
 
 /**
+ * A Color pointer; semantically, the index into an array-indexed Color buffer
+ *
  * @author link
  */
-public enum SGL {
-	;
+public interface Index {
 
-	private static final Toolkit CROSS_PLATFORM_TOOLKIT = null;
-
-	public static Toolkit getDefaultToolkit() {
-		return CROSS_PLATFORM_TOOLKIT;
-	}
+	/**
+	 * The literal index value into an array-indexed Color buffer.
+	 *
+	 * @return this index as an integer array offset
+	 */
+	int value();
 
 }

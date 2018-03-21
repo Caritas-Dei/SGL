@@ -25,20 +25,11 @@
  *
  * This file is part of SGL
  */
-package sgl;
-
-import sgl.toolkit.Toolkit;
+package sgl.pipeline;
 
 /**
  * @author link
  */
-public enum SGL {
-	;
-
-	private static final Toolkit CROSS_PLATFORM_TOOLKIT = null;
-
-	public static Toolkit getDefaultToolkit() {
-		return CROSS_PLATFORM_TOOLKIT;
-	}
+public interface Pipeline3D<C extends Canvas2D> extends Pipeline2D<C> {
 
 }

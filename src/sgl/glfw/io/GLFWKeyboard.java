@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright 2015 link.
+ * Copyright ${year} Andrew Porter.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,26 +21,27 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  *
- * Created file on 12/28/15 at 6:36 PM.
+ * Created file on ${date} at ${time}.
  *
- * This file is part of jGUI
+ * This file is part of SGL
  */
 package sgl.glfw.io;
 
 import org.lwjgl.glfw.GLFWKeyCallback;
+import sgl.display.Display;
+import sgl.glfw.display.GLFWDisplay;
 import sgl.glfw.log.GLFWLogger;
-import sgl.glfw.ui.display.GLFWDisplay;
 import sgl.io.KeyMap;
 import sgl.io.KeyMaps;
 import sgl.io.Keyboard;
-import sgl.log.Logger;
-import sgl.ui.display.Display;
+import sgl.util.log.Logger;
 
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.lwjgl.glfw.GLFW.*;
+import static org.lwjgl.system.MemoryUtil.NULL;
 
 /**
  * A Keyboard.
@@ -93,7 +94,7 @@ public final class GLFWKeyboard extends GLFWKeyCallback implements Keyboard {
 		logger = new GLFWLogger("Keyboard");
 		this.display = display;
 		// if the display is a GLFWDisplay, get it's handle, otherwise we use the hashCode of the type as handle.
-		displayHandle = display instanceof GLFWDisplay ? ((GLFWDisplay) display).ptr() : display.hashCode();
+		displayHandle = display instanceof GLFWDisplay ? ((GLFWDisplay) display).ptr() : NULL;
 		keyState = new int[display instanceof GLFWDisplay ? GLFW_KEY_LAST : KeyEvent.KEY_LAST];
 	}
 
@@ -106,9 +107,8 @@ public final class GLFWKeyboard extends GLFWKeyCallback implements Keyboard {
 			current = key;
 
 			logger.log("Key Pressed: " + current);
-			logger.log("Previous State: " + keyState[previous]);
-			logger.log("Current State: " + keyState[current]);
-			logger.log("End~\n");
+			logger.log("\tPrevious State: " + keyState[previous]);
+			logger.log("\tCurrent State: " + keyState[current]);
 		}
 	}
 

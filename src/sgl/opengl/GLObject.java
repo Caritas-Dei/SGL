@@ -25,20 +25,33 @@
  *
  * This file is part of SGL
  */
-package sgl;
-
-import sgl.toolkit.Toolkit;
+package sgl.opengl;
 
 /**
+ * A GLObject is an object representing a GL data object. This does not
+ * represent GL data <em>types</em> (i.e. GLenum, GLuint, etc.).
+ *
  * @author link
  */
-public enum SGL {
-	;
+public interface GLObject {
 
-	private static final Toolkit CROSS_PLATFORM_TOOLKIT = null;
+	/**
+	 * Gets the GL name of this object (int). This is used by many different
+	 * kinds of GL object types such as textures and buffers. It is primarily
+	 * invoked internally, but it does give access to the actual name if
+	 * specific GL operations are required for that type of object, although
+	 * most operations have their own instance method for each GLObject.
+	 *
+	 * @return the GL name of this object (int)
+	 */
+	int glName();
 
-	public static Toolkit getDefaultToolkit() {
-		return CROSS_PLATFORM_TOOLKIT;
+	/**
+	 * If applicable, binds this object for immediate use by OpenGL. Used for non-{@linkplain org.lwjgl.opengl.ARBDirectStateAccess DSA}
+	 * data types used by OpenGL, such as textures, <abbr title="vertex buffer object">VBO</abbr>s, <abbr title="vertex array object">VAO</abbr>s,
+	 * <abbr title="element buffer object">EBO</abbr>s, etc.
+	 */
+	default void bind() {
 	}
 
 }

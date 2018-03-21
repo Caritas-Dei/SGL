@@ -25,20 +25,44 @@
  *
  * This file is part of SGL
  */
-package sgl;
+package sgl.hardware;
 
-import sgl.toolkit.Toolkit;
+import java.awt.*;
 
 /**
  * @author link
  */
-public enum SGL {
+public enum Screen {
 	;
+	private static final GraphicsEnvironment GRAPHICS_ENV = GraphicsEnvironment.getLocalGraphicsEnvironment();
+	private static final GraphicsDevice DEFAULT_GRAPHICS_DEVICE = GRAPHICS_ENV.getDefaultScreenDevice();
+	private static final GraphicsConfiguration DEFAULT_GRAPHICS_CONFIG = DEFAULT_GRAPHICS_DEVICE.getDefaultConfiguration();
+	private static final DisplayMode DEFAULT_DISPLAY_MODE = DEFAULT_GRAPHICS_DEVICE.getDisplayMode();
+	private static final int WIDTH = DEFAULT_DISPLAY_MODE.getWidth();
+	private static final int HEIGHT = DEFAULT_DISPLAY_MODE.getHeight();
 
-	private static final Toolkit CROSS_PLATFORM_TOOLKIT = null;
+	public static GraphicsEnvironment getGraphicsEnvironment() {
+		return GRAPHICS_ENV;
+	}
 
-	public static Toolkit getDefaultToolkit() {
-		return CROSS_PLATFORM_TOOLKIT;
+	public static GraphicsDevice getDefaultGraphicsDevice() {
+		return DEFAULT_GRAPHICS_DEVICE;
+	}
+
+	public static GraphicsConfiguration getDefaultGraphicsConfig() {
+		return DEFAULT_GRAPHICS_CONFIG;
+	}
+
+	public static DisplayMode getDefaultDisplayMode() {
+		return DEFAULT_DISPLAY_MODE;
+	}
+
+	public static int getWidth() {
+		return WIDTH;
+	}
+
+	public static int getHeight() {
+		return HEIGHT;
 	}
 
 }

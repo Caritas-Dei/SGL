@@ -25,20 +25,17 @@
  *
  * This file is part of SGL
  */
-package sgl;
+package sgl.opengl.image;
 
-import sgl.toolkit.Toolkit;
+import sgl.opengl.texture.GLTexture;
 
 /**
  * @author link
  */
-public enum SGL {
-	;
+public class GLImage extends GLTexture {
 
-	private static final Toolkit CROSS_PLATFORM_TOOLKIT = null;
-
-	public static Toolkit getDefaultToolkit() {
-		return CROSS_PLATFORM_TOOLKIT;
+	public GLImage(int width, int height) {
+		super(width * height);
 	}
 
 }

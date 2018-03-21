@@ -25,20 +25,19 @@
  *
  * This file is part of SGL
  */
-package sgl;
-
-import sgl.toolkit.Toolkit;
+package sgl.util.math.point;
 
 /**
  * @author link
  */
-public enum SGL {
-	;
+public interface Point2D extends Point {
 
-	private static final Toolkit CROSS_PLATFORM_TOOLKIT = null;
+	double getX();
 
-	public static Toolkit getDefaultToolkit() {
-		return CROSS_PLATFORM_TOOLKIT;
+	double getY();
+
+	default double[] getCoords() {
+		return new double[]{getX(), getY()};
 	}
 
 }

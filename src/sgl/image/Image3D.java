@@ -25,20 +25,27 @@
  *
  * This file is part of SGL
  */
-package sgl;
+package sgl.image;
 
-import sgl.toolkit.Toolkit;
+import sgl.image.color.Color;
+import sgl.image.raster.Raster;
+
+import java.nio.Buffer;
 
 /**
  * @author link
  */
-public enum SGL {
-	;
+public interface Image3D<C extends Canvas2D, R extends Raster, B extends Buffer> extends Image2D<C, R, B> {
 
-	private static final Toolkit CROSS_PLATFORM_TOOLKIT = null;
+	int getDepth();
 
-	public static Toolkit getDefaultToolkit() {
-		return CROSS_PLATFORM_TOOLKIT;
-	}
+
+	Color get(int s, int t, int r);
+
+	void set(int s, int t, int r, Color color);
+
+	B getValues(int startS, int endS, int startT, int endT, int startR, int endR);
+
+	void setValues(int startS, int endS, int startT, int endT, int startR, int endR, B buffer);
 
 }

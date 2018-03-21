@@ -25,20 +25,60 @@
  *
  * This file is part of SGL
  */
-package sgl;
+package sgl.util.log;
 
-import sgl.toolkit.Toolkit;
+import java.io.PrintStream;
+import java.util.Arrays;
+import java.util.List;
 
 /**
+ * Provisional Logging.
+ * <p>
+ * TODO - fix concurrency
+ *
  * @author link
  */
-public enum SGL {
-	;
+@FunctionalInterface
+public interface Logger {
 
-	private static final Toolkit CROSS_PLATFORM_TOOLKIT = null;
+	void log(Log.Entry entry);
 
-	public static Toolkit getDefaultToolkit() {
-		return CROSS_PLATFORM_TOOLKIT;
+	default String getName() {
+		return toString();
 	}
+
+	default void log(Log.Entry... entries) {
+		log(Arrays.asList(entries));
+	}
+
+	default void log(List<Log.Entry> list) {
+		list.forEach(this::log);
+	}
+
+	default void log(String entry) {
+		log(Log.Level.INFO, entry);
+	}
+
+	default void log(Log.Level level, String entry) {
+		log(level, System.out, entry);
+	}
+
+	default void log(Log.Level level, PrintStream printer, String entry) {
+		log(new Log.Entry(level, printer, entry));
+	}
+
+	default void log(Throwable t, String entry) {
+		log(t, Log.Level.ERROR, entry);
+	}
+
+	default void log(Throwable t, Log.Level level, String entry) {
+		log(t, level, System.err, entry);
+	}
+
+	default void log(Throwable t, Log.Level level, PrintStream printer,
+	                 String entry) {
+		log(new Log.Entry(t, level, printer, entry));
+	}
+
 
 }

@@ -25,20 +25,16 @@
  *
  * This file is part of SGL
  */
-package sgl;
 
-import sgl.toolkit.Toolkit;
+package sgl.opencl;
 
 /**
  * @author link
  */
-public enum SGL {
+public enum DeviceTracker {
 	;
 
-	private static final Toolkit CROSS_PLATFORM_TOOLKIT = null;
+	public static void addDevice(long device) {
 
-	public static Toolkit getDefaultToolkit() {
-		return CROSS_PLATFORM_TOOLKIT;
 	}
-
 }

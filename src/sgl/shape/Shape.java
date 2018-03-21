@@ -25,20 +25,19 @@
  *
  * This file is part of SGL
  */
-package sgl;
+package sgl.shape;
 
-import sgl.toolkit.Toolkit;
+import sgl.canvas.Renderable;
+import sgl.util.math.point.Point;
 
 /**
+ * Represents a 2D or higher dimensional shape. There are no 1D shapes (those
+ * are points), so SGL provides only Shape, Shape2D and Shape3D.
+ *
  * @author link
  */
-public enum SGL {
-	;
+public interface Shape<P extends Point> extends Renderable<Canvas2D> {
 
-	private static final Toolkit CROSS_PLATFORM_TOOLKIT = null;
-
-	public static Toolkit getDefaultToolkit() {
-		return CROSS_PLATFORM_TOOLKIT;
-	}
+	P[] assemble();
 
 }

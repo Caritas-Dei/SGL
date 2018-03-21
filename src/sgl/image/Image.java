@@ -25,20 +25,21 @@
  *
  * This file is part of SGL
  */
-package sgl;
+package sgl.image;
 
-import sgl.toolkit.Toolkit;
+import sgl.canvas.Canvas;
+import sgl.canvas.Renderable;
+import sgl.image.raster.Raster;
 
 /**
  * @author link
  */
-public enum SGL {
-	;
+public interface Image<C extends Canvas, R extends Raster> extends Renderable<C> {
 
-	private static final Toolkit CROSS_PLATFORM_TOOLKIT = null;
+	int getSize();
 
-	public static Toolkit getDefaultToolkit() {
-		return CROSS_PLATFORM_TOOLKIT;
-	}
+	R getRaster();
+
+	void setRaster(R raster);
 
 }

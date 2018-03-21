@@ -25,20 +25,18 @@
  *
  * This file is part of SGL
  */
-package sgl;
-
-import sgl.toolkit.Toolkit;
+package sgl.opengl.glsl;
 
 /**
  * @author link
  */
-public enum SGL {
+public enum GLSL {
 	;
 
-	private static final Toolkit CROSS_PLATFORM_TOOLKIT = null;
+	private static GLShader shader;
 
-	public static Toolkit getDefaultToolkit() {
-		return CROSS_PLATFORM_TOOLKIT;
+	public static GLProgram program(GLShader... shaders) {
+		return new GLProgram(shaders);
 	}
 
 }

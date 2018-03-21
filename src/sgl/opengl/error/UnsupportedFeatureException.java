@@ -25,20 +25,21 @@
  *
  * This file is part of SGL
  */
-package sgl;
 
-import sgl.toolkit.Toolkit;
+package sgl.opengl.error;
+
+import sgl.opengl.OpenGL.Feature;
 
 /**
  * @author link
  */
-public enum SGL {
-	;
+public class UnsupportedFeatureException extends RuntimeException {
 
-	private static final Toolkit CROSS_PLATFORM_TOOLKIT = null;
-
-	public static Toolkit getDefaultToolkit() {
-		return CROSS_PLATFORM_TOOLKIT;
+	public UnsupportedFeatureException(Class<?> source, Feature feature) {
+		super("The current OpenGL profile does not support the given feature: [" + source.getName() + "](OpenGL::" + feature + ")");
 	}
 
+	public UnsupportedFeatureException(Class<?> source, Feature feature, Throwable cause) {
+		super("The current OpenGL profile does not support the given feature: [" + source.getName() + "](OpenGL::" + feature + ")", cause);
+	}
 }

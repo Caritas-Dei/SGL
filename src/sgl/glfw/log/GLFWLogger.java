@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright 2015 link.
+ * Copyright ${year} Andrew Porter.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,16 +20,22 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
+ *
+ * Created file on ${date} at ${time}.
+ *
+ * This file is part of SGL
  */
 package sgl.glfw.log;
 
 import org.lwjgl.glfw.GLFWErrorCallback;
 import sgl.glfw.error.*;
-import sgl.log.Log;
-import sgl.log.Logger;
+import sgl.util.log.Log;
+import sgl.util.log.Logger;
 
 import java.io.PrintStream;
 import java.time.LocalDateTime;
+import java.util.ArrayDeque;
+import java.util.Queue;
 
 import static org.lwjgl.glfw.GLFW.*;
 
@@ -52,6 +58,7 @@ public final class GLFWLogger extends GLFWErrorCallback implements Logger, Threa
 	private volatile boolean print;
 
 	private final Thread logger;
+	private final Queue<Log.Entry> printQueue = new ArrayDeque<>(3);
 
 	public GLFWLogger(String name) {
 		this(name, System.out);
@@ -63,20 +70,20 @@ public final class GLFWLogger extends GLFWErrorCallback implements Logger, Threa
 
 		logger = new Thread(() -> {
 			while (running) {
-				synchronized (ps) {
-					try {
-						ps.wait();
+				synchronized (PRINT) {
+					while (!print || printQueue.peek() == null) try {
+						PRINT.wait();
 					} catch (InterruptedException e) {
 						// ignore
 					}
 
-					if (print)
-						synchronized (PRINT) {
-							printEntry(this, log.getLastEntry());
-						}
+					synchronized (ps) {
+						for (Log.Entry entry = null; (entry = printQueue.poll()) != null; entry = null)
+							printEntry(this, entry);
+					}
 					print = false;
 
-					ps.notifyAll();
+					PRINT.notifyAll();
 				}
 			}
 		});
@@ -115,13 +122,10 @@ public final class GLFWLogger extends GLFWErrorCallback implements Logger, Threa
 		}
 	}
 
-	private static void printEntry(final GLFWLogger logger,
-	                               final Log.Entry entry) {
+	private static void printEntry(final GLFWLogger logger, final Log.Entry entry) {
 		LocalDateTime time = entry.getTimeStamp();
 		Throwable t; // lazy init
-		synchronized (logger.ps) {
-			logger.ps.println("[" + time.getHour() + ":" + time.getMinute() + ":" + time.getSecond() + "][" + entry.getLevel().name() + "]" + ((t = entry.getError()) != null ? "[" + t.getClass().getSimpleName() + ":\"" + t.getLocalizedMessage() + "\" " : " ") + entry.getEntry().trim());
-		}
+		logger.ps.println("[" + time.getHour() + ":" + time.getMinute() + ":" + time.getSecond() + "][" + entry.getLevel().name() + "]" + ((t = entry.getError()) != null ? "[" + t.getClass().getSimpleName() + ":\"" + t.getLocalizedMessage() + "\" " : " ") + entry.getEntry().trim());
 	}
 
 	@Override
@@ -140,13 +144,9 @@ public final class GLFWLogger extends GLFWErrorCallback implements Logger, Threa
 
 	@Override
 	public void log(Log.Entry entry) {
-		synchronized (PRINT) {
-			log.addEntry(entry);
-			print = true;
-			synchronized (ps) {
-				ps.notify();
-			}
-		}
+		log.addEntry(entry);
+		printQueue.add(entry);
+		if (!print) print = true;
 	}
 
 }

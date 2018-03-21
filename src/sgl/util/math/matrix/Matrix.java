@@ -25,20 +25,37 @@
  *
  * This file is part of SGL
  */
-package sgl;
-
-import sgl.toolkit.Toolkit;
+package sgl.util.math.matrix;
 
 /**
  * @author link
  */
-public enum SGL {
-	;
+public interface Matrix<T extends Comparable<T>> extends Comparable<Matrix<T>> {
 
-	private static final Toolkit CROSS_PLATFORM_TOOLKIT = null;
+	T[] toArray();
 
-	public static Toolkit getDefaultToolkit() {
-		return CROSS_PLATFORM_TOOLKIT;
-	}
+	boolean[] toArrayB();
+
+	byte[] toArrayb();
+
+	short[] toArrays();
+
+	int[] toArrayi();
+
+	long[] toArrayl();
+
+	float[] toArrayf();
+
+	double[] toArrayd();
+
+	Matrix<T> add(Matrix<T> matrix);
+
+	Matrix<T> sub(Matrix<T> matrix);
+
+	Matrix<T> mul(Matrix<T> matrix);
+
+	Matrix<T> div(Matrix<T> matrix);
+
+	Matrix<T> invert();
 
 }

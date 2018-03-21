@@ -25,20 +25,65 @@
  *
  * This file is part of SGL
  */
-package sgl;
 
-import sgl.toolkit.Toolkit;
+package sgl.opencl.math;
 
 /**
  * @author link
  */
-public enum SGL {
+public enum CLMath {
 	;
 
-	private static final Toolkit CROSS_PLATFORM_TOOLKIT = null;
 
-	public static Toolkit getDefaultToolkit() {
-		return CROSS_PLATFORM_TOOLKIT;
+	public static strictfp double sin(double radians) {
+		return 0;
+	}
+
+	public static strictfp double cos(double radians) {
+		return 0;
+	}
+
+	public static strictfp double tan(double radians) {
+		return 0;
+	}
+
+
+	public static strictfp double sec(double radians) {
+		return 0;
+	}
+
+	public static strictfp double csc(double radians) {
+		return 0;
+	}
+
+	public static strictfp double cot(double radians) {
+		return 0;
+	}
+
+
+	public static strictfp double arcsin(double value) {
+		return 0;
+	}
+
+	public static strictfp double arccos(double value) {
+		return 0;
+	}
+
+	public static strictfp double arctan(double value) {
+		return 0;
+	}
+
+
+	public static strictfp double arcsec(double value) {
+		return 0;
+	}
+
+	public static strictfp double arccsc(double value) {
+		return 0;
+	}
+
+	public static strictfp double arccot(double value) {
+		return 0;
 	}
 
 }

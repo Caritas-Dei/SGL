@@ -25,20 +25,12 @@
  *
  * This file is part of SGL
  */
-package sgl;
-
-import sgl.toolkit.Toolkit;
-
 /**
+ * Provisional Logging that will be removed after development,
+ * and will be further developed in a separate library.
+ * <p>
+ * FIXME concurrent immediate logging
+ *
  * @author link
  */
-public enum SGL {
-	;
-
-	private static final Toolkit CROSS_PLATFORM_TOOLKIT = null;
-
-	public static Toolkit getDefaultToolkit() {
-		return CROSS_PLATFORM_TOOLKIT;
-	}
-
-}
+package sgl.util.log;

@@ -25,20 +25,43 @@
  *
  * This file is part of SGL
  */
-package sgl;
 
-import sgl.toolkit.Toolkit;
+package sgl.image.raster;
+
+import sgl.buffer.Buffer2D;
+import sgl.image.color.Color;
 
 /**
  * @author link
  */
-public enum SGL {
-	;
+public interface Raster2D extends Raster, Buffer2D {
 
-	private static final Toolkit CROSS_PLATFORM_TOOLKIT = null;
+	/**
+	 * Gets a rectangular region of colors from this Raster2D with the given x, y, size, and height, where (0, 0) is the
+	 * top left corner of the region.
+	 *
+	 * @param x      the x coordinate of the region
+	 * @param y      the y coordinate of the region
+	 * @param width  the size of the region
+	 * @param height the height of the region
+	 * @param colors the colors to put the read color data into
+	 */
+	default void get(int x, int y, int width, int height, final Color[] colors) {
+		get(x + y * width, width * height, colors);
+	}
 
-	public static Toolkit getDefaultToolkit() {
-		return CROSS_PLATFORM_TOOLKIT;
+	/**
+	 * Sets a rectangular region of colors from this Raster2D with the given x, y, size, and height, where (0, 0) is the
+	 * top left corner of the region.
+	 *
+	 * @param x      the x coordinate of the region
+	 * @param y      the y coordinate of the region
+	 * @param width  the size of the region
+	 * @param height the height of the region
+	 * @param colors the colors to put the read color data into
+	 */
+	default void set(int x, int y, int width, int height, final Color[] colors) {
+		set(x + y * width, width * height, colors);
 	}
 
 }
